@@ -51,7 +51,7 @@ export class UsersService {
     }
 
     create(user: {name: string, email: string, role: 'INTERN' | 'ENGINEER' | 'ADMIN'}) {
-        const usersByHighestId = [...this.users].sort((a, b) => b.id = a.id)
+        const usersByHighestId = [...this.users].sort((a, b) => b.id - a.id)
         const newUser = {
             id: usersByHighestId[0].id + 1,
             ...user
@@ -71,5 +71,11 @@ export class UsersService {
         return this.findOne(id);
     }
 
-    
+    delete(id: number) {
+        const removedUser = this.findOne(id);
+        this.users = this.users.filter(user => user.id !== id );
+        return removedUser;
+    }
+
+
 }
