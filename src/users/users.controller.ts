@@ -10,7 +10,7 @@ import {
   Delete,
   Query,
   ParseIntPipe,
-  ValidationPipe
+  ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 
@@ -42,7 +42,7 @@ export class UsersController {
   @Patch(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body(ValidationPipe) 
+    @Body(ValidationPipe)
     updateUserDto: UpdateUserDto,
   ) {
     return this.usersService.update(id, updateUserDto);
